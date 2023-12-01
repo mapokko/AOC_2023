@@ -5,7 +5,6 @@ async function main() {
     .split("\n")
     .map((line) => {
       let digits = line.match(/\d+/g);
-      console.log(digits);
       let numberString = digits
         ?.at(0)
         ?.at(0)
