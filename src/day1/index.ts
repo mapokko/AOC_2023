@@ -4,7 +4,7 @@ function getNumber(line: string): number {
   let digits = line.match(/\d+/g);
   return (
     Number.parseInt(
-      (digits?.at(0)?.at(0) ?? "")?.concat(digits?.at(-1)?.at(-1) ?? "")
+      `${digits?.[0]?.[0] ?? ""}${digits?.at(-1)?.slice(-1) ?? ""}`
     ) || 0
   );
 }
@@ -12,8 +12,7 @@ function getNumber(line: string): number {
 async function main() {
   return (await fs.readFile("./input.txt", "utf8"))
     .split("\n")
-    .map((line) => getNumber(line))
-    .reduce((acc, curr) => acc + curr, 0);
+    .reduce((acc, curr) => acc + getNumber(curr), 0);
 }
 
 main().then((res) => {
