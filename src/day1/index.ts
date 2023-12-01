@@ -10,8 +10,10 @@ function getNumber(text: string) {
 }
 
 async function main() {
-  const lines = (await fs.readFile("./input.txt", "utf8")).split("\n");
-  return lines.map((el) => getNumber(el)).reduce((acc, curr) => acc + curr, 0);
+  return (await fs.readFile("./input.txt", "utf8"))
+    .split("\n")
+    .map((el) => getNumber(el))
+    .reduce((acc, curr) => acc + curr, 0);
 }
 
 main().then((res) => {
