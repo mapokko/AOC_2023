@@ -1,16 +1,12 @@
 import * as fs from "node:fs/promises";
 
 function getNumber(text: string) {
-  let regex = /\d+/g;
   let digits = text
-    .match(regex)
+    .match(/\d+/g)
     ?.map((el) => el.split(""))
     .flat();
-  let number = 0;
-  if (digits) {
-    number = Number.parseInt(digits[0] + digits.slice(-1)[0]);
-  }
-  return number;
+
+  return digits ? Number.parseInt(digits[0] + digits.slice(-1)[0]) : 0;
 }
 
 async function main() {
