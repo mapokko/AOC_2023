@@ -4,8 +4,13 @@ async function main() {
   return (await fs.readFile("./input.txt", "utf8"))
     .split("\n")
     .map((line) => {
-      let digits = line.match(/\d+/g)?.reduce((acc, curr) => acc + curr, "");
-      return digits ? Number.parseInt(digits[0] + digits.slice(-1)[0]) : 0;
+      let digits = line.match(/\d+/g);
+      console.log(digits);
+      let numberString = digits
+        ?.at(0)
+        ?.at(0)
+        ?.concat(digits.at(-1)?.at(-1) ?? "");
+      return numberString ? Number.parseInt(numberString) : 0;
     })
     .reduce((acc, curr) => acc + curr, 0);
 }
