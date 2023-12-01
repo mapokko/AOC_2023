@@ -2,11 +2,7 @@ import * as fs from "node:fs/promises";
 
 function getNumber(line: string): number {
   let digits = line.match(/\d+/g);
-  return (
-    Number.parseInt(
-      `${digits?.[0]?.[0] ?? ""}${digits?.at(-1)?.slice(-1) ?? ""}`
-    ) || 0
-  );
+  return +`${digits?.[0]?.[0] ?? ""}${digits?.at(-1)?.slice(-1) ?? ""}` || 0;
 }
 
 async function main() {
